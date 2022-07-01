@@ -8,7 +8,7 @@ import { map, Observable } from 'rxjs';
 })
 export class ProductService { /* This class will make a get request to that back-end
 base URL, grab the data unwrap it accordingly and make it available as an array of
-products. */
+products. */ 
 
   private baseUrl = 'http://localhost:8080/api/products'; // Connect to product API
 
