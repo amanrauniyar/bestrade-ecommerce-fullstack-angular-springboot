@@ -5,6 +5,7 @@ in a nice table format.-->
 
     <thead class = "table-dark">
         <tr>
+            <th></th>
             <th scope = "col"> Name </th>
             <th scope = "col"> Price </th>
             <th scope = "col"> Units in Stock </th>
@@ -13,9 +14,12 @@ in a nice table format.-->
 
     <tbody> 
         <tr *ngFor = "let tempProduct of products">
-            <td scope="row"> {{ tempProduct.name}} </td>
-            <td scope="row"> {{ tempProduct.unitPrice | currency:'USD' }} </td>
-            <td scope="row"> {{ tempProduct.unitsInStock}} </td>
+            <td class = "align-middle">
+                <img src = "{{ tempProduct.imageUrl }}" height = "50" />
+            </td>
+            <td scope="row" class = "align-middle"> {{ tempProduct.name}} </td>
+            <td scope="row" class = "align-middle"> {{ tempProduct.unitPrice | currency:'USD' }} </td>
+            <td scope="row" class = "align-middle"> {{ tempProduct.unitsInStock}} </td>
         </tr>
     </tbody>
 
