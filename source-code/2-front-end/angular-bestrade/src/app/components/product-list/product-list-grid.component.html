@@ -1,0 +1,26 @@
+<!-- Basic table layout for our table for looping over our products and putting them
+in a nice table format.-->
+
+<table class = "table table-success table-striped">
+
+    <thead class = "table-dark">
+        <tr>
+            <th></th>
+            <th scope = "col"> Name </th>
+            <th scope = "col"> Price </th>
+            <th scope = "col"> Units in Stock </th>
+        </tr>
+    </thead>
+
+    <tbody> 
+        <tr *ngFor = "let tempProduct of products">
+            <td class = "align-middle">
+                <img src = "{{ tempProduct.imageUrl }}" height = "50" />
+            </td>
+            <td scope="row" class = "align-middle"> {{ tempProduct.name}} </td>
+            <td scope="row" class = "align-middle"> {{ tempProduct.unitPrice | currency:'USD' }} </td>
+            <td scope="row" class = "align-middle"> {{ tempProduct.unitsInStock}} </td>
+        </tr>
+    </tbody>
+
+</table>
