@@ -1,1 +1,5 @@
-<p>product-list works!</p>
+<!-- Accessing the products from the component. And those values are assigned based on our 
+call to that service. -->
+<p *ngFor = "let tempProduct of products">
+    {{ tempProduct.name}}: {{ tempProduct.unitPrice | currency:'USD' }}
+</p>
