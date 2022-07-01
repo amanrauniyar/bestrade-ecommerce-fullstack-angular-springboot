@@ -4,9 +4,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SpringBootBestradeApplication {
+public class SpringBootBesTradeApplication {
 	public static void main(String[] args) {
-		SpringApplication.run(SpringBootBestradeApplication.class, args);
+		SpringApplication.run(SpringBootBesTradeApplication.class, args);
 	}
 
 }
