@@ -7,7 +7,9 @@ import { map, Observable } from 'rxjs';
   providedIn: 'root'
 })
  /* The class below will make a get request to that back-end base URL, grab the data 
- unwrap it accordingly and make it available as an array of products. */ 
+ unwrap it accordingly and make it available as an array of products. By, default 
+ Spring Data REST returns only 20 in first page but, can do a workaround by adding
+ "?size=100" at the end to list 100 in the first page. */ 
  export class ProductService {
   private baseUrl = 'http://localhost:8080/api/products'; // Connect to product API
 
