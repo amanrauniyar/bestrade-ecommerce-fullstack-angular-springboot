@@ -10,11 +10,11 @@ import { Routes, RouterModule } from '@angular/router';
 /* Define routes. Order of routes is important. First match wins. Start from specific to 
 generic. */
 const routes: Routes = [
-  // Set up routes for category by id
+  // Set up routes for category by id.
   { path: 'category/:id', component: ProductListComponent },
-  // Set up routes for category by itself
+  // Set up routes for category by itself.
   { path: 'category', component: ProductListComponent }, 
-  // Also set up routes for products by itself
+  // Also set up routes for products by itself.
   { path: 'products', component: ProductListComponent }, 
   /* Empty paths will redirect to /products where rules don't apply so, forward slash is used 
   to match full path instead of prefix. */

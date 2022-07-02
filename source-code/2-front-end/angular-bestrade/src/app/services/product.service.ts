@@ -16,7 +16,10 @@ import { map, Observable } from 'rxjs';
  /* Injecting HttpClient as Angular has a dependence injection framework */ 
   constructor(private httpClient: HttpClient) { }
   // A method to get Product List which returns an observable of product array
-  getProductList(): Observable<Product[]>{ 
+  getProductList(thisCategoryId: number): Observable<Product[]>{ 
+
+    // @TO-DO: need to build URL based on the category id, will come back to this!
+     
   /* Returns an observable: Map the JSON data from Spring Data REST to Product Array */
     return this.httpClient.get<GetResponse>(this.baseUrl).pipe(
   /* Map the data to our given data type to grab that response from embedded: products 
