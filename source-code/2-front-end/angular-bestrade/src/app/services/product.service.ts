@@ -15,7 +15,7 @@ import { ProductCategory } from '../common/product-category';
 
   private baseUrl = 'http://localhost:8080/api/products'; // Connect to product API
   // Connect to product category API
-  private categoryUrl = 'http://localhost:8080/api/products/category';
+  private categoryUrl = 'http://localhost:8080/api/product-category';
  /* Injecting HttpClient as Angular has a dependence injection framework */ 
   constructor(private httpClient: HttpClient) { }
   // A method to get Product List which returns an observable of product array
