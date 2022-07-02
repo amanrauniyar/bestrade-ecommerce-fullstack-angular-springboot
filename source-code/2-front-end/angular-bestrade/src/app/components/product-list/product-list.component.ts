@@ -41,7 +41,7 @@ export class ProductListComponent implements OnInit {
 
     // Now get the products for the given category id  
     /* Make use of my productService and call getProductList and actually subscribe to the
-    data. Method is invoked once you subsribe() in an asynchronus fashion.*/ 
+    data. Method is invoked once you subscribe() in an asynchronus fashion.*/ 
     this.productService.getProductList(this.currentCategoryId).subscribe(
       data => {
       /* Assign results to the Product array for integrating our service with Angular 
