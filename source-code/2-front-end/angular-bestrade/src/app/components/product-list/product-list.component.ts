@@ -18,7 +18,7 @@ export class ProductListComponent implements OnInit {
 
   // Add some new properties for pagination
   thePageNumber: number = 1;
-  thePageSize: number = 10;
+  thePageSize: number = 24;
   theTotalElements: number = 0;
 
   /* Inject the dependency ProductService into this product list component. */
@@ -80,11 +80,11 @@ export class ProductListComponent implements OnInit {
     }
 
 
-    // Check if we have a different category than previous
+    // Check if I have a different category than previous
     // Note: Angular will reuse a component if it is currently being viewed
 
 
-    // If we have a different category id than previous then set thePageNumber back to 1
+    // If I have a different category id than previous then set thePageNumber back to 1
     if (this.previousCategoryId != this.currentCategoryId) {
       this.thePageNumber = 1;
     }
