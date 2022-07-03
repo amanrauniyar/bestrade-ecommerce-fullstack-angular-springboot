@@ -11,8 +11,8 @@ import { ProductCategoryMenuComponent } from './components/product-category-menu
 /* Define routes. Order of routes is important. First match wins. Start from specific to 
 generic. */
 const routes: Routes = [
-  // Set up routes for category by id.
-  { path: 'category/:id', component: ProductListComponent },
+  // Set up routes for category by id and add a new name parameter to the route.
+  { path: 'category/:id/:name', component: ProductListComponent },
   // Set up routes for category by itself.
   { path: 'category', component: ProductListComponent }, 
   // Also set up routes for products by itself.

@@ -12,6 +12,7 @@ export class ProductListComponent implements OnInit {
 
   products: Product[];
   currentCategoryId: number; // Add a new property for currentCategoryId
+  currentCategoryName: string;
   /* Inject the dependency ProductService into this product list component. */
   constructor(private productService: ProductService,
     private route: ActivatedRoute) { } // Useful for accessing the route parameters.
@@ -33,10 +34,15 @@ export class ProductListComponent implements OnInit {
     if (hasCategoryId) {
       // Get the "id" param string, convert that string to a number using the "+" symbol
       this.currentCategoryId = +this.route.snapshot.paramMap.get('id')!;
+
+      // Get the "name" param string
+      this.currentCategoryName = this.route.snapshot.paramMap.get('name')!;
     }
     else {
-      // No category if available then, default it to category id 1.
+      /* No category if available then, default it to category id 1 and name of 
+      'Books'. */
       this.currentCategoryId = 1;
+      this.currentCategoryName = 'Books';
     }
 
     // Now get the products for the given category id  
