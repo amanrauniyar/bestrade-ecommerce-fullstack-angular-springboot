@@ -51,13 +51,15 @@
 
             <div class="col-md-6">
                 <div class="row">
-                    <div class="col-md-9" style="padding-left: 30%">
+                    <div class="col-md-9" style="padding-left: 10%">
                         <!-- Set up page parameters to automatically generate data from 
                         properties of ProductListComponent assigned from right to parameters
                         of ngb-pagination components. -->
                         <ngb-pagination [(page)]="thePageNumber"
                                         [pageSize]="thePageSize"
                                         [collectionSize]="theTotalElements"
+                                        [maxSize] = "5"
+                                        [boundaryLinks]= "true"
                                         (pageChange)="listProducts()"> // Event-binding 
                                         pageChange event to make sure it shows a new page of
                                         data based on this information.
@@ -71,6 +73,7 @@
                       <!-- Event binding: on change, When user selcets a page, then 
                       call method updatePageSize() & the value is selected by user. -->
                       <select #mySelect (change)="updatePageSize(+mySelect.value)">
+                        <option>2</option>
                           <option selected="true">5</option>
                           <option>10</option>
                           <option>25</option>
