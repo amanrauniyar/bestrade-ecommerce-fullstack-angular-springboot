@@ -28,6 +28,19 @@ import { ProductCategory } from '../common/product-category';
     return this.httpClient.get<Product>(productUrl);
   }
 
+  getProductListPaginate(thePage: number, thePageSize: number, theCategoryId: number): 
+                        Observable<GetResponseProducts> { 
+
+    /* I need to build URL based on the category id, page and size. Spring Data REST 
+    automatically supports pagination out of the box. Just send the parameters for page and 
+    size. */
+    const searchUrl = `${this.baseUrl}/search/findByCategoryId?id=${theCategoryId}`
+                      + `&page=${thePage}&size=${thePageSize}`;
+
+    return this.httpClient.get<GetResponseProducts>(searchUrl); 
+
+  } 
+
   // A method to get Product List which returns an observable of product array
   getProductList(theCategoryId: number): Observable<Product[]>{ 
 
