@@ -8,12 +8,15 @@ import { ProductService } from './services/product.service';
 
 import { Routes, RouterModule } from '@angular/router';
 import { ProductCategoryMenuComponent } from './components/product-category-menu/product-category-menu.component';
+import { SearchComponent } from './components/search/search.component';
 /* Define routes. Order of routes is important. First match wins. Start from specific to 
 generic. */
 const routes: Routes = [
+  // Set up route for product search by keyword
+  {path: 'search/:keyword', component: ProductListComponent},
   // Set up routes for category by id and add a new name parameter to the route.
   { path: 'category/:id/:name', component: ProductListComponent },
-  // Set up routes for category by itself.
+  // Set up route for category by itself.
   { path: 'category', component: ProductListComponent }, 
   // Also set up routes for products by itself.
   { path: 'products', component: ProductListComponent }, 
@@ -26,7 +29,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [AppComponent, ProductListComponent, ProductCategoryMenuComponent],
+  declarations: [AppComponent, ProductListComponent, ProductCategoryMenuComponent, SearchComponent],
   imports: [RouterModule.forRoot(routes), BrowserModule, HttpClientModule],
   providers: [ProductService],
   bootstrap: [AppComponent],
