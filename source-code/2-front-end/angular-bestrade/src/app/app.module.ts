@@ -12,11 +12,14 @@ import { SearchComponent } from './components/search/search.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CartStatusComponent } from './components/cart-status/cart-status.component';
+import { CartDetailsComponent } from './components/cart-details/cart-details.component';
 
 
 /* Define routes. Order of routes is important. First match wins. Start from specific to 
 generic. */
 const routes: Routes = [
+  // Set up route for cart details and map over to the component CartDetailsComponent
+  {path: 'cart-details', component: CartDetailsComponent},
   //Set up route for product details for master view
   {path: 'products/:id', component: ProductDetailsComponent},
   // Set up route for product search by keyword
@@ -37,7 +40,7 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [AppComponent, ProductListComponent, ProductCategoryMenuComponent, 
-    SearchComponent, ProductDetailsComponent, CartStatusComponent],
+    SearchComponent, ProductDetailsComponent, CartStatusComponent, CartDetailsComponent],
   imports: [RouterModule.forRoot(routes), BrowserModule, HttpClientModule, NgbModule],
   providers: [ProductService],
   bootstrap: [AppComponent]
