@@ -32,7 +32,8 @@
 
                         <!-- Increment Button -->
                         <div class="col">
-                            <button class="btn btn-primary btn-sm">
+                            <button (click) = "incrementQuantity(tempCartItem)"
+                            class="btn btn-primary btn-sm">
                                 <i class="fas fa-plus"></i>
                             </button>
                         </div>
@@ -53,7 +54,7 @@
                         <div class = "col"></div>
                     </div>
                 </div> 
-                   
+
                 <p class="mt-2">
                     Subtotal:
                     {{
