@@ -1,1 +1,19 @@
-<p>search works!</p>
+<div class="form-header">
+
+    <!-- Template Reference Variable as myInput -->
+    <input #myInput type="text" 
+           placeholder="Search for products ..."
+           class="au-input au-input-xl"
+           (keyup.enter)="nowSearch(myInput.value)" 
+     />
+
+    <!-- Added Event Binding/Handler in line 6 to listen for the enter key when user presses
+    call the method nowSearch in angular code to search by passing in the text user 
+    passed in as the value -->
+
+    <!-- Added event binding on the button accordingly -->
+    <button (click)="nowSearch(myInput.value)" class="au-btn-submit">
+        Search
+    </button>
+
+</div>
