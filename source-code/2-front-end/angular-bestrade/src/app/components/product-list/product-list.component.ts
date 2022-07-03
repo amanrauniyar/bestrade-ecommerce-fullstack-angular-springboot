@@ -13,6 +13,7 @@ export class ProductListComponent implements OnInit {
   products: Product[];
   currentCategoryId: number; // Add a new property for currentCategoryId
   currentCategoryName: string;
+  searchMode: boolean;
   /* Inject the dependency ProductService into this product list component. */
   constructor(private productService: ProductService,
     private route: ActivatedRoute) { } // Useful for accessing the route parameters.
@@ -26,6 +27,32 @@ export class ProductListComponent implements OnInit {
   }
 
   listProducts() {
+    // Given keyword passed in from app.module.ts to search-component.ts 
+    this.searchMode = this.route.snapshot.paramMap.has('keyword');
+
+    if(this.searchMode){ // If there is a keyword
+      this.handleSearchProducts(); //Call hand;eSearchProducts
+    }
+
+    else {
+    this.handleListProducts();
+    }
+
+  }
+
+  handleSearchProducts() {
+    const theKeyword: string = this.route.snapshot.paramMap.get('keyword')!;
+
+    // Now search for products using that given keyword
+    this.productService.searchProducts(theKeyword).subscribe(
+      data => {
+        this.products = data;
+      }
+    ) 
+  }
+
+  handleListProducts(){
+
     /*  Check if "id" parameter is available by using the activated route ("route"), state
     of the route at this given point in time and map of all the route parameters. If 
     available returns true, if not then false. */
@@ -55,6 +82,7 @@ export class ProductListComponent implements OnInit {
         this.products = data;
       }
     )
+
   }
 
 }
