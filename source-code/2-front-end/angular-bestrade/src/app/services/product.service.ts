@@ -80,6 +80,13 @@ import { ProductCategory } from '../common/product-category';
    _embedded: {
     // Acess the array of product
     products: Product[];
+  },
+  page: {
+    size: number; //Size of this page
+    totalElements: number, /* Grand total of all elements in the db but we aren't returning 
+    all of them, just the count for informational purposes only. */
+    totalPages: number, // Total pages available
+    number: number // Current page number
   }
 }
 
