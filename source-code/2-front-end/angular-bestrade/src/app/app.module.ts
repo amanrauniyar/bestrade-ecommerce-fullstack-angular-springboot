@@ -11,6 +11,7 @@ import { ProductCategoryMenuComponent } from './components/product-category-menu
 import { SearchComponent } from './components/search/search.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CartStatusComponent } from './components/cart-status/cart-status.component';
 
 
 /* Define routes. Order of routes is important. First match wins. Start from specific to 
@@ -36,7 +37,7 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [AppComponent, ProductListComponent, ProductCategoryMenuComponent, 
-    SearchComponent, ProductDetailsComponent],
+    SearchComponent, ProductDetailsComponent, CartStatusComponent],
   imports: [RouterModule.forRoot(routes), BrowserModule, HttpClientModule, NgbModule],
   providers: [ProductService],
   bootstrap: [AppComponent]
