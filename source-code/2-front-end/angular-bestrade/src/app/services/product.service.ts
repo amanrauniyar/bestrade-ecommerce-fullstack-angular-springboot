@@ -65,7 +65,7 @@ import { ProductCategory } from '../common/product-category';
     return this.getProducts(searchUrl); 
   }
 
-  searchProductPaginate(thePage: number, thePageSize: number, theKeyword: string): 
+  searchProductsPaginate(thePage: number, thePageSize: number, theKeyword: string): 
                         Observable<GetResponseProducts> { 
 
   /* I need to build URL based on the keyword, page and size. Spring Data REST 

@@ -21,6 +21,8 @@ export class ProductListComponent implements OnInit {
   thePageSize: number = 5;
   theTotalElements: number = 0;
 
+  previousKeyword: string | null;
+
   /* Inject the dependency ProductService into this product list component. */
   constructor(private productService: ProductService,
     private route: ActivatedRoute) { } // Useful for accessing the route parameters.
@@ -50,12 +52,20 @@ export class ProductListComponent implements OnInit {
   handleSearchProducts() {
     const theKeyword: string = this.route.snapshot.paramMap.get('keyword')!;
 
+    // If we have a different keyword than previous then set thePageNumber to 1
+    if (this.previousKeyword != theKeyword) {
+      this.thePageNumber = 1;
+    }
+
+    this.previousKeyword = theKeyword;
+
+    console.log(`keyword=${theKeyword}, thePageNumber=${this.thePageNumber}`);
+
     // Now search for products using that given keyword
-    this.productService.searchProducts(theKeyword).subscribe(
-      data => {
-        this.products = data;
-      }
-    ) 
+    this.productService.searchProductsPaginate(this.thePageNumber - 1,
+                                              this.thePageSize, theKeyword)
+                                              .subscribe(this.processResult()
+      );
   }
 
   handleListProducts(){
