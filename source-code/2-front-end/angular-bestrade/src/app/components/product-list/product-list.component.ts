@@ -18,7 +18,7 @@ export class ProductListComponent implements OnInit {
 
   // Add some new properties for pagination
   thePageNumber: number = 1;
-  thePageSize: number = 24;
+  thePageSize: number = 5;
   theTotalElements: number = 0;
 
   /* Inject the dependency ProductService into this product list component. */
@@ -114,6 +114,14 @@ export class ProductListComponent implements OnInit {
       this.thePageSize = data.page.size;
       this.theTotalElements = data.page.totalElements;
     };
+  }
+
+  // Method to update page size
+  updatePageSize(pageSize: number){
+    this.thePageSize = pageSize; // Make an assignment
+    this.thePageNumber = 1; // Make an assignment
+    this.listProducts(); /* Call list products to refresh the page view based on the 
+    new information after it has for page size, number and so on. */ 
   }
 
 }
