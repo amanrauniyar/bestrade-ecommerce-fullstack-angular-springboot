@@ -65,6 +65,18 @@ import { ProductCategory } from '../common/product-category';
     return this.getProducts(searchUrl); 
   }
 
+  searchProductPaginate(thePage: number, thePageSize: number, theKeyword: string): 
+                        Observable<GetResponseProducts> { 
+
+  /* I need to build URL based on the keyword, page and size. Spring Data REST 
+  automatically supports pagination out of the box. Just send the parameters for page and 
+  size. */
+  const searchUrl = `${this.baseUrl}/search/findByNameContaining?name=${theKeyword}`
+                    + `&page=${thePage}&size=${thePageSize}`;
+
+  return this.httpClient.get<GetResponseProducts>(searchUrl); 
+  } 
+
   private getProducts(searchUrl: string): Observable<Product[]> {
     return this.httpClient.get<GetResponseProducts>(searchUrl).pipe(
       /* Map the data to our given data type to grab that response from embedded: products
