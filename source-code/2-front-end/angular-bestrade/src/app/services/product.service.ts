@@ -21,6 +21,13 @@ import { ProductCategory } from '../common/product-category';
  /* Injecting HttpClient as Angular has a dependence injection framework */ 
   constructor(private httpClient: HttpClient) { }
 
+  getProduct(theProductId: number): Observable<Product> {
+    // Need to build URL based on product id.
+    const productUrl = `${this.baseUrl}/${theProductId}`;
+    // Call the REST API based on its product URL
+    return this.httpClient.get<Product>(productUrl);
+  }
+
   // A method to get Product List which returns an observable of product array
   getProductList(theCategoryId: number): Observable<Product[]>{ 
 
