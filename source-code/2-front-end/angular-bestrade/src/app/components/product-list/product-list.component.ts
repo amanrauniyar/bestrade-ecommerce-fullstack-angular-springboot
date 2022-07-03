@@ -134,4 +134,10 @@ export class ProductListComponent implements OnInit {
     new information after it has for page size, number and so on. */ 
   }
 
+  addToCart(theProduct: Product) {
+
+    console.log(`Adding to cart: ${theProduct.name}, ${theProduct.unitPrice}`);
+
+  }
+
 }
