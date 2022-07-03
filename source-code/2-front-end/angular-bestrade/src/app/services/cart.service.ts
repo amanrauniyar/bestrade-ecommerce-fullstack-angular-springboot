@@ -47,7 +47,7 @@ export class CartService {
 
     // Compute cart total price and total quantity
     this.computeCartTotals();
-    }
+  }
 
   computeCartTotals() {
 
