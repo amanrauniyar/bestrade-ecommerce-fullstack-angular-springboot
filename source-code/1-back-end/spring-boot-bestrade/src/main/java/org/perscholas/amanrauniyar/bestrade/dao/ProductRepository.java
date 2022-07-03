@@ -16,5 +16,9 @@ extend the JpaRepository, and then we specify entity type (Product) and also pri
     endpoint. */
     Page<Product> findByCategoryId(@RequestParam("id") Long id, Pageable pageable);
 
+    /* Query method - Behind the scenes, Spring will execute a query similar to this SELECT * FROM product p
+    WHERE p.name LIKE CONCAT ('%', :name, '%') endpoint. */
+    Page<Product> findByNameContaining(@RequestParam("name") String name, Pageable pageable);
+
 
 }
