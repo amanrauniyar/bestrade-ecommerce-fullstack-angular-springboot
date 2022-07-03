@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Product } from '../common/product';
-import { map, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { ProductCategory } from '../common/product-category';
 
 @Injectable({
@@ -52,18 +53,6 @@ import { ProductCategory } from '../common/product-category';
 
   } 
 
-  /* A method to get Product Categories which returns an observable of product 
-  categories array */
-  getProductCategories(): Observable <ProductCategory[]> {
-    /* Returns an observable: Map the JSON data from Spring Data REST to Product 
-    Category Array */
-    return this.httpClient.get<GetResponseProductCategory>(this.categoryUrl).pipe(
-       /* Map the data to our given data type to grab that response from embedded: products 
-       to make use of product category array*/ 
-      map(response => response._embedded.productCategory)
-    ); 
-  }
-
   /* Line 56 calls the method getProducts on lines 59-65 and returns the value to function
   searchProducts which was just extracted in line 50-57. */
 
@@ -84,6 +73,18 @@ import { ProductCategory } from '../common/product-category';
     );
   }
 
+  /* A method to get Product Categories which returns an observable of product 
+  categories array */
+  getProductCategories(): Observable <ProductCategory[]> {
+    /* Returns an observable: Map the JSON data from Spring Data REST to Product 
+    Category Array */
+    return this.httpClient.get<GetResponseProductCategory>(this.categoryUrl).pipe(
+       /* Map the data to our given data type to grab that response from embedded: products 
+       to make use of product category array*/ 
+      map(response => response._embedded.productCategory)
+    ); 
+  }
+
 }
  /* Also adding an supporting interface to help us with the mapping above to unwrap the 
  JSON data from the spring of data REST API */
@@ -91,7 +92,7 @@ import { ProductCategory } from '../common/product-category';
  /* This will help us to make use of _embedded entry that comes back from the spring 
  data REST API. */
    _embedded: {
-    // Acess the array of product
+    // Access the array of product
     products: Product[];
   },
   page: {

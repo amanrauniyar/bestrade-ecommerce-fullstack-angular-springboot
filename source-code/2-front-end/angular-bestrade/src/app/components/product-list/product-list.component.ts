@@ -13,7 +13,14 @@ export class ProductListComponent implements OnInit {
   products: Product[];
   currentCategoryId: number; // Add a new property for currentCategoryId
   currentCategoryName: string;
-  searchMode: boolean;
+  previousCategoryId: number = 1;
+  searchMode: boolean = false;
+
+  // Add some new properties for pagination
+  thePageNumber: number = 1;
+  thePageSize: number = 10;
+  theTotalElements: number = 0;
+
   /* Inject the dependency ProductService into this product list component. */
   constructor(private productService: ProductService,
     private route: ActivatedRoute) { } // Useful for accessing the route parameters.
@@ -72,17 +79,41 @@ export class ProductListComponent implements OnInit {
       this.currentCategoryName = 'Books';
     }
 
-    // Now get the products for the given category id  
-    /* Make use of my productService and call getProductList and actually subscribe to the
-    data. Method is invoked once you subscribe() in an asynchronus fashion.*/ 
-    this.productService.getProductList(this.currentCategoryId).subscribe(
-      data => {
-      /* Assign results to the Product array for integrating our service with Angular 
-      Component */
-        this.products = data;
-      }
-    )
 
+    // Check if we have a different category than previous
+    // Note: Angular will reuse a component if it is currently being viewed
+
+
+    // If we have a different category id than previous then set thePageNumber back to 1
+    if (this.previousCategoryId != this.currentCategoryId) {
+      this.thePageNumber = 1;
+    }
+
+    this.previousCategoryId = this.currentCategoryId;
+
+    console.log(`currentCategoryId=${this.currentCategoryId}, 
+                thePageNumber=${this.thePageNumber}`);
+
+    // Now get the products for the given category id  
+    /* Make use of my productService and call getProductListPaginate and actually subscribe to the
+    data. Method is invoked once you subscribe() in an asynchronus fashion. Pagiantion 
+    component: pages are 1 based whereas in Spring Data REST: pages are 0 based. */ 
+    this.productService.getProductListPaginate(this.thePageNumber - 1,
+                                               this.thePageSize,
+                                               this.currentCategoryId)
+                                               .subscribe(this.processResult());
+  }
+
+  processResult() {
+    // Map data from JSON response to properties in this class. 
+    return (data: any) => {
+      /* Left-hand side of assignment are properties defined in this class and everything on 
+      the right hand side of assignment is data from Spring Data REST JSON. */
+      this.products = data._embedded.products;
+      this.thePageNumber = data.page.number + 1;
+      this.thePageSize = data.page.size;
+      this.theTotalElements = data.page.totalElements;
+    };
   }
 
 }
