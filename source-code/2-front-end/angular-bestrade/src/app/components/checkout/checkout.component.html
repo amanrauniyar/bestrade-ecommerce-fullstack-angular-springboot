@@ -3,7 +3,7 @@
     <div class="container-fluid">
 
     <!-- Name of property from component class -->
-    <form [formGroup] = "checkoutFormGroup">
+    <form [formGroup] = "checkoutFormGroup" (ngSubmit) = "onSubmit()">
 
         <!-- Customer (name of key) form group -->
         <div formGroupName = "customer" class = "form-area">
@@ -18,6 +18,25 @@
                     </div>
                 </div>
             </div>
+
+            <div class="row">
+                <div class="col-md-2"> <label>Last Name</label></div>
+                <div class="col-md-9">
+                    <div class="input-space">
+                        <input formControlName="lastName" type="text">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-2"> <label>Email</label></div>
+                <div class="col-md-9">
+                    <div class="input-space">
+                        <input formControlName="email" type="text">
+                    </div>
+                </div>
+            </div>
+
         </div>
                 <!-- Submit button-->
                 <div class="text-center">
