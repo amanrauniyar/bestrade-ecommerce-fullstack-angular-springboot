@@ -20,7 +20,7 @@ export class CheckoutComponent implements OnInit {
   creditCardYears: number[] = [];
   creditCardMonths: number[] = [];
 
-  constructor(@Inject(String) private formBuilder: FormBuilder,
+  constructor(private formBuilder: FormBuilder,
               private besTradeFormService: BesTradeFormService) { }
 
   ngOnInit(): void {
