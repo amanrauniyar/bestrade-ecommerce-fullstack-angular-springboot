@@ -13,7 +13,7 @@ export class BesTradeFormService {
     let data: number[] = [];
     
     // Build an array for "Month" dropdown list
-    // Start at current month and loop until 
+    // Start at current month and loop until end of year months
 
     for (let theMonth = startMonth; theMonth <= 12; theMonth++) {
       data.push(theMonth);
