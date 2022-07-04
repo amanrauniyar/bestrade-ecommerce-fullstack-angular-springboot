@@ -40,9 +40,77 @@
         </div>
 
         <!-- Shipping Address -->
-        <!-- Customer (shippingAddress) form group -->
+        <!-- shippingAddress form group -->
         <div formGroupName = "shippingAddress" class = "form-area">
             <h3> Shipping Address </h3>
+
+            <div class = "row">
+                <div class = "col-md-2"> <label> Country </label> </div>
+                <div class = "col-md-9">
+                    <div class = "input-space">
+                        <!-- Name of control in form froup = firstname -->
+                        <select formControlName = "country">
+                            <option> TO DO </option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-2"> <label> Street </label></div>
+                <div class="col-md-9">
+                    <div class="input-space">
+                        <input formControlName = "street" type="text">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-2"> <label> City </label> </div>
+                <div class="col-md-9">
+                    <div class="input-space">
+                        <input formControlName = "city" type="text">
+                    </div>
+                </div>
+            </div>
+
+            <div class = "row">
+                <div class = "col-md-2"> <label> State </label> </div>
+                <div class = "col-md-9">
+                    <div class = "input-space">
+                        <!-- Name of control in form froup = firstname -->
+                        <select formControlName = "state">
+                            <option> TO DO </option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class = "row">
+                <div class = "col-md-2"> <label> Zip Code </label></div>
+                <div class = "col-md-9">
+                    <div class = "input-space">
+                        <input formControlName = "zipCode" type="text">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Add check box to copy shipping to billing address -->
+        <div class="input-space">
+            <label class="au-checkbox">
+                <input type="checkbox" (change)="copyShippingAddressToBillingAddress
+                ($event)">
+                <span class="au-checkmark"> </span>
+                Billing Address same as Shipping Address
+            </label>
+        </div>
+
+        <!-- Billing Address -->
+        <!-- billingAddress form group -->
+        <div formGroupName = "billingAddress" class = "form-area">
+            <h3> Billing Address </h3>
 
             <div class = "row">
                 <div class = "col-md-2"> <label> Country </label> </div>

@@ -9,6 +9,8 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 export class CheckoutComponent implements OnInit {
 
   checkoutFormGroup: FormGroup;
+  shippingAddressStates: any;
+  billingAddressStates: any;
 
   constructor(private formBuilder: FormBuilder) { }
 
@@ -48,6 +50,25 @@ export class CheckoutComponent implements OnInit {
 
     });
 
+  }
+
+  copyShippingAddressToBillingAddress(event) {
+
+    if (event.target.checked) {
+      this.checkoutFormGroup.controls['billingAddress']
+            .setValue(this.checkoutFormGroup.controls['shippingAddress'].value);
+
+      // Bug fix for states
+      this.billingAddressStates = this.shippingAddressStates;
+    }
+
+    else {
+      this.checkoutFormGroup.controls['billingAddress'].reset();
+
+      // Bug fix for states
+      this.billingAddressStates = [];
+    }
+    
   }
 
   onSubmit() {
