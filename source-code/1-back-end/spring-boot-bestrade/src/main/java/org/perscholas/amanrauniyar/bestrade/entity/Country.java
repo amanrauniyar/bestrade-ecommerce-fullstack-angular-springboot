@@ -26,7 +26,7 @@ public class Country {
 
     // Set up one-to-many because one country has many states
     @OneToMany(mappedBy = "country")
-    @JsonIgnore
+    @JsonIgnore //This will ignore the states when it makes the return on the actual data, will just give countries.
     private List<State> states;
 
 }
