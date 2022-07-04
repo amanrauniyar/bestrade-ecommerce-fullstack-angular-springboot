@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { BesTradeFormService } from 'src/app/services/bes-trade-form.service';
 
 @Component({
   selector: 'app-checkout',
@@ -9,12 +10,18 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 export class CheckoutComponent implements OnInit {
 
   checkoutFormGroup: FormGroup;
-  totalPrice: number = 0;
-  totalQuantity: number = 0;
+
   shippingAddressStates: any;
   billingAddressStates: any;
 
-  constructor(private formBuilder: FormBuilder) { }
+  totalPrice: number = 0;
+  totalQuantity: number = 0;
+
+  creditCardYears: number[] = [];
+  creditCardMonths: number[] = [];
+
+  constructor(@Inject(String) private formBuilder: FormBuilder,
+              private besTradeFormService: BesTradeFormService) { }
 
   ngOnInit(): void {
 
@@ -51,6 +58,28 @@ export class CheckoutComponent implements OnInit {
       })
 
     });
+
+
+    // Populate credit card months
+
+    const startMonth: number = new Date().getMonth() + 1;
+    console.log("startMonth: " + startMonth);
+
+    this.besTradeFormService.getCreditCardMonths(startMonth).subscribe(
+      data => {
+        console.log("Retrieved credit card months: " + JSON.stringify(data));
+        this.creditCardMonths = data;
+      }
+    );
+
+    // Populate credit card years
+
+    this.besTradeFormService.getCreditCardYears().subscribe(
+      data => {
+        console.log("Retrieved credit card years: " + JSON.stringify(data));
+        this.creditCardYears = data;
+      }
+    );
 
   }
 
