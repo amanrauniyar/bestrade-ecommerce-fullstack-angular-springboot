@@ -21,7 +21,7 @@ export class CheckoutComponent implements OnInit {
         email: ['']
       })
     });
-    
+
   }
 
 }

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
@@ -43,9 +44,12 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [AppComponent, ProductListComponent, ProductCategoryMenuComponent, 
-    SearchComponent, ProductDetailsComponent, CartStatusComponent, CartDetailsComponent, CheckoutComponent],
-  imports: [RouterModule.forRoot(routes), BrowserModule, HttpClientModule, NgbModule],
+                SearchComponent, ProductDetailsComponent, CartStatusComponent, 
+                CartDetailsComponent, CheckoutComponent],
+  imports: [RouterModule.forRoot(routes), BrowserModule, HttpClientModule, NgbModule,
+           ReactiveFormsModule ],
   providers: [ProductService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports: [FormsModule, ReactiveFormsModule]
 })
 export class AppModule { }
