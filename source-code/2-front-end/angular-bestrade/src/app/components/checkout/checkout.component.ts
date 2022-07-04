@@ -1,5 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Country } from 'src/app/common/country';
 import { BesTradeFormService } from 'src/app/services/bes-trade-form.service';
 
 @Component({
@@ -19,6 +20,8 @@ export class CheckoutComponent implements OnInit {
 
   creditCardYears: number[] = [];
   creditCardMonths: number[] = [];
+
+  countries: Country[] = [];
 
   constructor(private formBuilder: FormBuilder,
               private besTradeFormService: BesTradeFormService) { }
@@ -78,6 +81,15 @@ export class CheckoutComponent implements OnInit {
       data => {
         console.log("Retrieved credit card years: " + JSON.stringify(data));
         this.creditCardYears = data;
+      }
+    );
+     
+    // Populate countries
+
+    this.besTradeFormService.getCountries().subscribe(
+      data => {
+        console.log("Retrieved countries: " + JSON.stringify(data));
+        this.countries = data;
       }
     );
 

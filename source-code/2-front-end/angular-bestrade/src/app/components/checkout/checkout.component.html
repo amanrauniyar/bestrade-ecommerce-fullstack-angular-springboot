@@ -50,7 +50,8 @@
                     <div class = "input-space">
                         <!-- Name of control in form froup = firstname -->
                         <select formControlName = "country">
-                            <option> TO DO </option>
+                            <option *ngFor = "let country of countries" [ngValue]="country">
+                            {{ country.name }} </option>
                         </select>
                     </div>
                 </div>
@@ -118,7 +119,8 @@
                     <div class = "input-space">
                         <!-- Name of control in form froup = firstname -->
                         <select formControlName = "country">
-                            <option> TO DO </option>
+                            <option *ngFor = "let country of countries" [ngValue]= "country">
+                            {{ country.name }} </option>
                         </select>
                     </div>
                 </div>
