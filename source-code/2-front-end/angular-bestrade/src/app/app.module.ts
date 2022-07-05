@@ -15,6 +15,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CartStatusComponent } from './components/cart-status/cart-status.component';
 import { CartDetailsComponent } from './components/cart-details/cart-details.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
+import { LoginComponent } from './components/login/login.component';
 
 
 /* Define routes. Order of routes is important. First match wins. Start from specific to 
@@ -45,7 +46,7 @@ const routes: Routes = [
 @NgModule({
   declarations: [AppComponent, ProductListComponent, ProductCategoryMenuComponent, 
                 SearchComponent, ProductDetailsComponent, CartStatusComponent, 
-                CartDetailsComponent, CheckoutComponent],
+                CartDetailsComponent, CheckoutComponent, LoginComponent],
   imports: [RouterModule.forRoot(routes), BrowserModule, HttpClientModule, NgbModule,
            ReactiveFormsModule],
   providers: [ProductService],
