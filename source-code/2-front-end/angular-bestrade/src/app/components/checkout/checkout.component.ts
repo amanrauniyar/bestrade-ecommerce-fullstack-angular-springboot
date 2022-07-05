@@ -1,6 +1,7 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Country } from 'src/app/common/country';
+import { State } from 'src/app/common/state';
 import { BesTradeFormService } from 'src/app/services/bes-trade-form.service';
 
 @Component({
@@ -12,9 +13,6 @@ export class CheckoutComponent implements OnInit {
 
   checkoutFormGroup: FormGroup;
 
-  shippingAddressStates: any;
-  billingAddressStates: any;
-
   totalPrice: number = 0;
   totalQuantity: number = 0;
 
@@ -22,6 +20,11 @@ export class CheckoutComponent implements OnInit {
   creditCardMonths: number[] = [];
 
   countries: Country[] = [];
+
+  shippingAddressStates: any;
+  billingAddressStates: any;
+  // shippingAddressStates: State[] = [];
+  // billingAddressStates: State[] = [];
 
   constructor(private formBuilder: FormBuilder,
               private besTradeFormService: BesTradeFormService) { }
@@ -119,6 +122,10 @@ export class CheckoutComponent implements OnInit {
     console.log(this.checkoutFormGroup.get('customer').value);
     console.log("The email address is " + this.checkoutFormGroup.get('customer')
     .value.email);
+    console.log("The shipping address country is " + this.checkoutFormGroup.get
+    ('shippingAddress').value.country.name);
+    console.log("The shipping address state is " + this.checkoutFormGroup.get
+    ('shippingAddress').value.state.name);
   }
 
   handleMonthsAndYears() {
@@ -143,7 +150,33 @@ export class CheckoutComponent implements OnInit {
         console.log("Retrieved credit card months: " + JSON.stringify(data));
         this.creditCardMonths = data;
       }
-    );
-
+    );  
   }  
+
+  getStates(formGroupName: string) {
+
+    const formGroup = this.checkoutFormGroup.get(formGroupName);
+
+    const countryCode = formGroup.value.country.code;
+    const countryName = formGroup.value.country.name;
+
+    console.log(`${formGroupName} country code: ${countryCode}`);
+    console.log(`${formGroupName} country name: ${countryName}`);
+
+    this.besTradeFormService.getStates(countryCode).subscribe(
+      data => {
+
+        if (formGroupName === 'shippingAddress') {
+          this.shippingAddressStates = data; 
+        }
+        else {
+          this.billingAddressStates = data;
+        }
+
+        // Select first item by default
+        formGroup.get('state').setValue(data[0]);
+      }
+    );
+  }
+
 }
