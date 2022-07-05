@@ -16,6 +16,7 @@ import { CartStatusComponent } from './components/cart-status/cart-status.compon
 import { CartDetailsComponent } from './components/cart-details/cart-details.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { LoginComponent } from './components/login/login.component';
+import { LoginStatusComponent } from './components/login-status/login-status.component';
 
 
 /* Define routes. Order of routes is important. First match wins. Start from specific to 
@@ -46,7 +47,7 @@ const routes: Routes = [
 @NgModule({
   declarations: [AppComponent, ProductListComponent, ProductCategoryMenuComponent, 
                 SearchComponent, ProductDetailsComponent, CartStatusComponent, 
-                CartDetailsComponent, CheckoutComponent, LoginComponent],
+                CartDetailsComponent, CheckoutComponent, LoginComponent, LoginStatusComponent],
   imports: [RouterModule.forRoot(routes), BrowserModule, HttpClientModule, NgbModule,
            ReactiveFormsModule],
   providers: [ProductService],
