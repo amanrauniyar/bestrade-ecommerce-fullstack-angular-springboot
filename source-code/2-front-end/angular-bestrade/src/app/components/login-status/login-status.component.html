@@ -1,1 +1,14 @@
-<p>login-status works!</p>
+<div class="login-status-header">
+
+    <!-- If user's authenticated then display the welcome message to user -->
+    <div *ngIf = "isAuthenticated && userFullName" class = "login-status-user-info">
+        Welcome back {{ userFullName }}!
+    </div>
+    <!-- If user's not authenticated then show the login button to user -->
+    <button *ngIf = "!isAuthenticated" routerLink = "/login" class = "security-btn">
+        Login </button>
+    <!-- If user's authenticated then show them the logout button to user -->
+    <button *ngIf = "isAuthenticated" (click) = "logout()" class = "security-btn"> 
+        Logout </button>
+
+</div>
