@@ -25,8 +25,8 @@ import java.util.Set;
 
 
     @Autowired // Optional as in this case, there is only one constructor, but done to be explicit.
-    public MyDataRestConfig(EntityManager theEntMgr) {
-        entityManager = theEntMgr;
+    public MyDataRestConfig(EntityManager theEntityManager) {
+        entityManager = theEntityManager;
     }
     @Override
     public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config, CorsRegistry cors) {

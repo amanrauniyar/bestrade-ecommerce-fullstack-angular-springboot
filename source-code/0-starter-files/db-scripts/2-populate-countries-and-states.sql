@@ -5,9 +5,12 @@ SET foreign_key_checks = 0;
 SET NAMES 'utf8mb4';
 SET CHARACTER SET utf8mb4;
 
---
+-- -----------------------------------------------------
+-- Created 6 countries and 223 states altogether
+-- -----------------------------------------------------
+-- -----------------------------------------------------
 -- Table structure for table `country`
---
+-- -----------------------------------------------------
 
 DROP TABLE IF EXISTS `country`;
 

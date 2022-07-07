@@ -1,4 +1,28 @@
-<!-- Container to inject the Okta Sign-In Widget -->
-<div class = "pt=5">
-    <div id = "okta-sign-in-widget" class = "pt-5"> </div>
+<div class = "parent">
+    <h2> Best Trade - Affordable Quality Shopping </h2>
+    <div class = "child">
+    <h4> Log In </h4>
+        <form #loginForm="ngForm" (ngSubmit)="loginUser()">
+            <small class = "text-danger"> {{msg}} </small>
+            <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <!-- Whatever the user provides email in the text-box assign it to the property 
+            email value of user and bind it to our POJO values using ngModel. -->
+            <input type="email" class="form-control"  aria-describedby ="emailHelp" 
+            placeholder="Enter email" name="email" [(ngModel)] = "user.emailId">
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email 
+            with anyone else.</small>
+            </div>
+            <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input type="password" class="form-control" placeholder="Password" 
+            name = "password" [(ngModel)] = "user.password">
+            </div>
+            <div class="form-group form-check">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1"> Remember me </label>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
 </div>

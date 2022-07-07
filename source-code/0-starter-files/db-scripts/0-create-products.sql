@@ -7,6 +7,8 @@ CREATE SCHEMA `full-stack-bestrade`;
 USE `full-stack-bestrade` ;
 
 -- -----------------------------------------------------
+-- Tested with 5 products and 1 product category
+-- -----------------------------------------------------
 -- Table `full-stack-bestrade`.`product_category`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `full-stack-bestrade`.`product_category` (

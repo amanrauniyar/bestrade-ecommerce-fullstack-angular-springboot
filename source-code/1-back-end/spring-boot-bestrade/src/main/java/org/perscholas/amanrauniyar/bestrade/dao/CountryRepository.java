@@ -1,9 +1,10 @@
 package org.perscholas.amanrauniyar.bestrade.dao;
 
-import org.perscholas.amanrauniyar.bestrade.entity.Country;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.web.bind.annotation.CrossOrigin;
+
+import org.perscholas.amanrauniyar.bestrade.entity.Country;
 
 @CrossOrigin("http://localhost:4200")
 @RepositoryRestResource(collectionResourceRel = "countries", path = "countries")

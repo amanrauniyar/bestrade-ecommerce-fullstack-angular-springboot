@@ -3,10 +3,13 @@ package org.perscholas.amanrauniyar.bestrade.entity;
 import lombok.Data;
 
 import javax.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Table(name = "state")
-@Data
+@Getter
+@Setter
 public class State {
 
     @Id

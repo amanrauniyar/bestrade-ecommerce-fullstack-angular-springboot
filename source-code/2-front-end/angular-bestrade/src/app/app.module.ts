@@ -16,12 +16,17 @@ import { CartStatusComponent } from './components/cart-status/cart-status.compon
 import { CartDetailsComponent } from './components/cart-details/cart-details.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { LoginComponent } from './components/login/login.component';
-import { LoginStatusComponent } from './components/login-status/login-status.component';
+import { RegistrationComponent } from './components/registration/registration.component';
+import { LoginSuccessComponent } from './login-success/login-success.component';
 
 
 /* Define routes. Order of routes is important. First match wins. Start from specific to 
 generic. */
 const routes: Routes = [
+  // Set up route for login success and map over to the LoginSuccessComponent
+  {path: 'login-success', component: LoginSuccessComponent},
+  // Set up route for login and map over to the LoginComponent
+  {path: '', component: LoginComponent},
   // Set up route for checkout and map over to the CheckoutComponent
   {path: 'checkout', component: CheckoutComponent},
   // Set up route for cart details and map over to the CartDetailsComponent
@@ -47,9 +52,9 @@ const routes: Routes = [
 @NgModule({
   declarations: [AppComponent, ProductListComponent, ProductCategoryMenuComponent, 
                 SearchComponent, ProductDetailsComponent, CartStatusComponent, 
-                CartDetailsComponent, CheckoutComponent, LoginComponent, LoginStatusComponent],
-  imports: [RouterModule.forRoot(routes), BrowserModule, HttpClientModule, NgbModule,
-           ReactiveFormsModule],
+                CartDetailsComponent, CheckoutComponent, LoginComponent, RegistrationComponent, LoginSuccessComponent],
+  imports:  [RouterModule.forRoot(routes), BrowserModule, HttpClientModule, NgbModule,
+            ReactiveFormsModule, FormsModule],
   providers: [ProductService],
   bootstrap: [AppComponent],
   exports: [FormsModule, ReactiveFormsModule]

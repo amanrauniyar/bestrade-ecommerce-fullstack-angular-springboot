@@ -1,6 +1,8 @@
 package org.perscholas.amanrauniyar.bestrade.entity;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -10,7 +12,8 @@ import java.util.Date;
 
 @Entity // Set up my JPA annotation
 @Table(name="product") // Set up my JPA annotation for table to map this argument table product
-@Data /* Data annotation from Lombok project to have support of automatically generating the getter/setter methods
+@Getter
+@Setter /* Data annotation from Lombok project to have support of automatically generating the getter/setter methods
 behind the scenes to reduce boiler place code */
 public class Product {
 
